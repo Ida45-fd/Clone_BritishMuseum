@@ -173,17 +173,19 @@ body {
 
 /* GRID */
 .exhibitions-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 36px;
+  align-items: stretch;
 }
 
 /* CARD */
 .exhibition-card {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  min-height: 280px; /* reduced */
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   background: #111;
+  overflow: hidden;
 }
 
 
@@ -194,6 +196,8 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  gap: 22px;
+  flex: 1;
 }
 
 
@@ -268,9 +272,7 @@ body {
 
 /* Badge */
 .badge {
-  position: absolute;
-  bottom: 40px;
-  right: 40px;
+  position: static;
   width: 56px;
   height: 56px;
   font-size: 0.8rem;
@@ -278,6 +280,8 @@ body {
   display: grid;
   place-items: center;
   font-weight: 500;
+  margin-top: auto;
+  align-self: flex-end;
 }
 
 .badge.muted {
@@ -291,6 +295,11 @@ body {
 }
 
 /* IMAGE */
+.exhibition-image {
+  order: -1;
+  aspect-ratio: 4 / 3;
+}
+
 .exhibition-image img {
   width: 100%;
   height: 100%;
@@ -307,12 +316,15 @@ body {
    RESPONSIVE
 ================================ */
 @media (max-width: 900px) {
-  .exhibition-card {
+  .exhibitions-grid {
     grid-template-columns: 1fr;
   }
 
+  .exhibition-card {
+    min-height: auto;
+  }
+
   .badge {
-    position: static;
     margin-top: 30px;
   }
 }
